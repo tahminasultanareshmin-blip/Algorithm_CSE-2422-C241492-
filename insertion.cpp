@@ -1,27 +1,21 @@
-
-
 #include <bits/stdc++.h>
 using namespace std;
 
-int binarySearch(int arr[], int n, int item) {
-    int low = 0, high = n - 1;
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
 
-    while (low <= high) {
-        int mid = (low + high) / 2;
-
-        if (arr[mid] == item)
-            return mid;
-        else if (arr[mid] < item)
-            low = mid + 1;
-        else
-            high = mid - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
     }
-    return -1;
 }
 
 int main() {
-    int n, item;
-
+    int n;
     cout << "Enter number of elements: ";
     cin >> n;
 
@@ -31,17 +25,13 @@ int main() {
         cin >> arr[i];
     }
 
-    sort(arr, arr + n);
+    insertionSort(arr, n);
 
-    cout << "Enter element to search: ";
-    cin >> item;
-
-    int result = binarySearch(arr, n, item);
-
-    if (result != -1)
-        cout << "Element found at position " << result + 1 << " (in sorted array)" << endl;
-    else
-        cout << "Element not found" << endl;
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
