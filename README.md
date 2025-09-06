@@ -1,3 +1,1 @@
-Lab 1
-Lab 2
-Lab 3
+Code of Linear Search, Binary Search and Insertion Sort.
